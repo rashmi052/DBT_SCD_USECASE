@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: sources_c_g
+    database: DBT_PRACTICE
+    schema: DBT_RMAURYA
+    tables:
+      - name: c_source_1
+      - name: c_source_2
+      - name: c_source_3
