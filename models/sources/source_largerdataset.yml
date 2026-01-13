@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: source_largerdataset
+    database: EXAMPLE_DB
+    schema: DBT_RMAURYA
+    tables:
+      - name: RECORDS_1000

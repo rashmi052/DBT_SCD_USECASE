@@ -38,6 +38,19 @@ with all_sources as (
         cast(null as varchar) as country,
         convert_timezone('UTC', updated_at)::timestamp_ntz as load_ts
     from {{ source('sources_c_g', 'c_source_3') }}
+
+
+    union all
+
+    select 
+        first_name as first_name,
+        last_name as last_name,
+        email as email,
+        phone as phone,
+        city as city,
+        country as country,
+        convert_timezone('UTC', updated_at)::timestamp_ntz as load_ts
+    from {{ ref('records_1000') }}
 ),
 
 -- =====================================================
@@ -47,12 +60,12 @@ keyed as (
 
     select
         {{ dbt_utils.generate_surrogate_key([
-            'first_name',
-            'last_name',
             'email'
         ]) }} as customer_sk,
 
         {{ dbt_utils.generate_surrogate_key([
+            'first_name',
+            'last_name',
             'phone',
             'city',
             'country'
