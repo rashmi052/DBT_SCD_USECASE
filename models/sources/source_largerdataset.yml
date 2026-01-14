@@ -5,4 +5,4 @@ sources:
     database: EXAMPLE_DB
     schema: DBT_RMAURYA
     tables:
-      - name: RECORDS_1000
+      - name: records_1000

@@ -50,7 +50,7 @@ with all_sources as (
         city as city,
         country as country,
         convert_timezone('UTC', updated_at)::timestamp_ntz as load_ts
-    from {{ ref('records_1000') }}
+    from {{ source('source_largerdataset', 'records_1000') }}
 ),
 
 -- =====================================================
