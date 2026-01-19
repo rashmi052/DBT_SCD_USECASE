@@ -51,6 +51,20 @@ with all_sources as (
         country as country,
         convert_timezone('UTC', updated_at)::timestamp_ntz as load_ts
     from {{ source('source_largerdataset', 'records_1000') }}
+
+
+
+    union all
+
+    select 
+        first_name as first_name,
+        last_name as last_name,
+        email as email,
+        phone as phone,
+        city as city,
+        country as country,
+        convert_timezone('UTC', updated_at)::timestamp_ntz as load_ts
+    from {{ source('source_largerdataset', 'records_10k') }}
 ),
 
 -- =====================================================

@@ -6,3 +6,4 @@ sources:
     schema: DBT_RMAURYA
     tables:
       - name: records_1000
+      - name: records_10k
