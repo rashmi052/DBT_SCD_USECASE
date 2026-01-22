@@ -65,10 +65,10 @@ current_dim as (
 delta as (
     select s.*
     from stage s
-    left join current_dim d
-        on s.customer_sk = d.customer_sk
-    where d.customer_sk is null
-       or s.record_hash <> d.record_hash
+    left join current_dim d         --left join keeps all records from stage model which has latest data
+        on s.customer_sk = d.customer_sk    --joins with existing active records based on sk column
+    where d.customer_sk is null            --new records
+       or s.record_hash <> d.record_hash    ---changed records
 )
 
 -- =====================================================
